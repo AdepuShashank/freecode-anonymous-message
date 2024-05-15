@@ -14,7 +14,7 @@ suite("funtional tests", function (){
             chai 
                 .request(server)
                 .post("/api/threads/test-board")
-                .set("content-type", "application.json")
+                .set("content-type", "application/json")
                 .send({text: "test text", delete_password: "test"})
                 .end(function(err,res){
                     assert.equal(res.status,200);
@@ -65,7 +65,7 @@ suite("funtional tests", function (){
             chai
                 .request(server)
                 .post("/api/replies/test-board")
-                .set("sontent-type" , "application/json")
+                .set("content-type" , "application/json")
                 .send({
                     thread_id: testThread_id,
                     text: "test reply",
@@ -105,7 +105,7 @@ suite("funtional tests", function (){
             chai 
                 .request(server)
                 .delete("/api/replies/test-board")
-                .set("content type", "application/json")
+                .set("content-type", "application/json")
                 .send({
                     thread_id: testThread_id,
                     reply_id: testReply_id,
@@ -125,7 +125,7 @@ suite("funtional tests", function (){
                 .send({thread_id: testThread_id, reply_id: testReply_id})
                 .end(function(err,res){
                     assert.equal(res.status,200);
-                    assert.equal(res.text,"success");
+                    assert.equal(res.text,"Success");
                     done();
                 });
         });
@@ -137,11 +137,11 @@ suite("funtional tests", function (){
                 .send({
                     thread_id: testThread_id,
                     reply_id: testReply_id,
-                    delete_password:"test"
+                    delete_password: "testreply",
                 })
                 .end(function(err,res){
                     assert.equal(res.status,200);
-                    assert.equal(res.text,"success");
+                    assert.equal(res.text,"Success");
                     done();
                 });
         });
@@ -150,7 +150,7 @@ suite("funtional tests", function (){
                 .request(server)
                 .delete("/api/threads/test-board")
                 .set("content-type", "application/json")
-                .send({thread_id: testThread_id,delete_password:"test"})
+                .send({thread_id: testThread_id, delete_password:"test"})
                 .end(function(err,res){
                     assert.equal(res.status,200);
                     assert.equal(res.text,"success");

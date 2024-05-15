@@ -123,7 +123,7 @@ module.exports = function (app) {
     });
   });
     
-  app.route('/api/replies/:board').post((req,res) =>{
+  app.route('/api/replies/:board').post((req,res) => {
     console.log("thread",req.body);
     const {thread_id,text, delete_password} = req.body;
     const board = req.params.board;
@@ -191,7 +191,7 @@ module.exports = function (app) {
         if(reply.delete_password === delete_password){
           reply.remove();
         } else{
-          res.send("incorrect password");
+          res.send("Incorrect password");
           return;
         }
         data.save((err, updatedData) => {
